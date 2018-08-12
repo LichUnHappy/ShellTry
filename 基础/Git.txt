@@ -1,0 +1,49 @@
+# 初始化
+git init
+
+# 允许远程访问
+git updare-server-info
+
+# clone
+git clone http://github.com/LichUnhappy
+git clone bullgo@127.0.0.1:gtMyTreasure
+
+# 添加
+echo "This is a joke." > xixi.sh
+git add xixi.sh
+
+# 一次提交多个提交
+git add *.c
+
+# 提交
+git commit
+
+-m: 指定一条信息，不进入编辑器
+-a: 在提交前加入新的代码
+
+# 切换到之前的分支
+git checkout oldBranchNmae
+
+# 查看分支
+git branch
+
+# 合并分支
+git checkout originalBranch
+git checkout -b modsToOriginalBranch
+git commit -am "COmment on modifications to originalBranch"
+git checkout originalBranch
+git merge modsToOriginalBranch
+git branch -d MyBranchName # delete
+
+# 查看提交日志 
+git log
+
+# patch?
+
+# 推送
+git push origin MyBranchName
+git push origin master:NewBranchName
+
+# 找BUG
+git blame tstGit.sh
+

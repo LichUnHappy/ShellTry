@@ -1,0 +1,36 @@
+#测试 or say test命令
+[-f $var]:如果给定的变量包含正常的文件路径或者文件名，则返回真
+[-x $var]:如果给定的变量包含的文件可执行，则返回真
+[-d $var]:如果给定的变量包含的是目录，则返回真
+[-e $var]:如果给定的变量包含的文件存在，则返回真
+[-c $var]:如果给定的变量包含的是一个字符设备文件的路径，则返回真
+[-b $var]:如果给定的变量包含的是一个块设备文件的路径，则返回真
+[-w $var]:如果给定的变量包含的文件可写，则返回真
+[-r $var]:如果给定的变量包含的文件可读，则返回真
+[-L $var]:如果给定的变量包含的是一个符号连接，则返回真
+
+if [ $var -eq 0]; then echo "True";  fi
+
+also fine with
+
+if test $var -eq 0; then echo "True"; fi
+
+#字符串比较
+[[ $str1 = $str2 ]] 当str1和str2一样，真
+[[ $str1 == $str2 ]]
+[[ $str1 != $str2 ]]
+
+[[ $str1 > $str2 ]] ASCII值比较
+[[ $str1 < $str2 ]]
+
+#测试空串
+[[ -z $str1 ]] 空串，真
+[[ -n $str1 ]] 非空，真
+
+
+str1="Not"
+str2=""
+if [[ -n $str1 ]] && [[ -z $str2 ]];
+then
+    echo str1 is Not and str2 is !
+fi

@@ -1,0 +1,45 @@
+# 计算md5sum  sha1sum
+md5sum filename
+md5sum filename1 filename2 filename3 ..
+md5sum filename > file_sum.md5
+
+# 检验数据完整性
+md5sum -c file_sum.md5
+md5sum -c *.md5
+
+# 对目录进行校验
+md5deep or sha1deep 
+
+md5deep -rl directory_path > directory_path.md5
+# -r使用递归遍历
+# -l使用相对路径。默认绝对。
+
+或者也可以使用find
+find directory_path -type f -print0 | xargs -0 md5sum >> directory.md5
+md5sum -c directory.md5
+
+
+#crypt加密
+crypt <input_file >output_file
+Enter psw
+
+crypt psw <input_file >output_file
+
+#crypt解密
+crypt psw -d <encrypted_file>output_file
+
+#gpg加密
+gpg -c filename
+
+#gpg解密
+gpg filename.gpg
+
+#base64编码
+base64 filename > output_file
+or
+cat file | base64 > output_file
+#base64解码
+base64 -d file > output_file
+or
+cat base64_file | base64 -d >output_file
+
