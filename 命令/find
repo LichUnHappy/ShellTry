@@ -1,0 +1,11 @@
+-print 使用\n换行符分割输出的每个文件或目录名。
+-print0则是用空字符'\0'来分割，和xargs连用。
+
+-name指定了文件名的模式。单引号能阻止shell扩展，石命令传输给find
+
+-iname 忽略字母大消息
+
+-a和-and同与  -o和-or同或
+
+find . \( -name '*e*' -a -name 's*' \)
+
