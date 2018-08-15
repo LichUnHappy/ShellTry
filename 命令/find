@@ -7,5 +7,111 @@
 
 -a和-and同与  -o和-or同或
 
+# 搜索名字以s开头且其中包含e的文件
 find . \( -name '*e*' -a -name 's*' \)
 
+# 匹配.py或.sh文件
+find . -regex '.*\(py\|sh\)$'
+
+# -iregex 匹配时忽略大小写
+find . -iregex '.*\(\.py\|\.sh\)$'
+
+# 否定参数 ！排除匹配到的模式
+find . ! -name "*.txt" -print
+
+# 基于目录深度的搜索
+# find命令在查找时会遍历所有的子目录。默认情况下，find命令不会跟随符号链接。-L选项可以强制其改变
+# 这行为。但是如果碰上了指向自身的链接，find就会死循环
+# -maxdepth和-mindepth可以限制深度
+# /proc文件系统中包含了系统与当前执行任务的星系。特定任务的目录层次相当深，其中还有一些绕回到自身的符号链接。
+# 系统中运行的每个进程在proc中都有对应的子目录，其名称就是该进程ID。这个目录下有一个叫做cwd的链接
+# 指向进程的当前工作目录
+
+find -L /proc -maxdepth 1 -name 'bundlemaker.def' 2>/dev/null
+
+find . -mindepth 2 -name "f*" -print
+
+
+# 根据文件类型搜索
+# 普通文件 f
+# 符号链接 l
+# 目录 d
+# 字符设备 c
+# 块设备 b
+# 套接字 s
+# FIFO p
+
+# 列出所有的目录（包含子目录）
+find . -type d -print
+
+# 普通文件
+find . -type f -print
+
+# 只列出符号链接
+find . -type l -print
+
+# 根据时间戳搜索
+# 访问时间 -atime 用户最近一次访问文件的时间
+# 修改时间 -mtime 文件内容最后一次被修改的时间
+# 变化时间 -ctime 文件元数据（例如权限或所有权）最后一次修改的时间
+# 可加day +表示大于 -表示小于
+
+# 打印在最近2天内被访问的所有文件
+find . -type f -atime -2 -print
+
+# 打印出恰好在2天前被访问的文件
+find . -type f -atime 2 -print
+
+# 打印出访问时间超过2天的所有文件
+find . -type f -atime +2 -print
+
+# -amin 分钟
+# -mmin
+# -cmin
+
+# 打印5分钟之前访问的所有文件
+find . -type f -amin +5 -print
+
+# -newer可以制定一个用于比较修改时间的寻找
+# 找出比touch文件更新的文件
+find . -type f -newer touch -print
+
+# 基于文件大小的搜索
+# 大于2kb的文件
+find . -type f -size +2k
+# 小于2kb的文件
+find . -type f -size -2k
+# 等于2kb的文件
+find . -type f -size 2k
+
+# b 块 512字节
+# c 字节
+# w 字 2字节
+# k 千字节 1024字节
+# M 兆字节 1024k字节
+# G 吉字节 1024M字节
+
+# 基于文件权限和所有权的匹配
+find . -type f -name "*.txt" ! -perm 644 -print
+
+# 找出用户bullgo的所有文件 -user
+find . -type f -user bullgo -print
+
+# 删除匹配的文件 -delete
+find . -type f -name "next.*" -delete
+
+# 执行命令 -exec 用{}代替文件名
+find . -type f -perm 777 -exec chmod 644 {} ;\
+# 必须对分号转义！！！！！！！
+
+# 将10天前的.txt文件复制到OLD目录中
+find . -type f -mtime +3 -name "*" -exec cp {} OLD \;
+
+# -exec无法直接使用多个命令，但是可以把多个命令写道一个shell脚本中，然后调用
+-exec ./commands.sh {} \;
+
+# -exec 可以与printf搭配使用输出信息
+find . -type f -name "*.txt" -exec printf "File path: %s\n " {} \;
+
+# 跳过特定目录 prune 修剪
+find Shell -name '.git' -prune -o -type f -print
