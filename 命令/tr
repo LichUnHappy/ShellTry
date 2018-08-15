@@ -1,0 +1,33 @@
+# tr可以对来自标准输入的内容进行字符替换、字符删除以及重复字符压缩。
+
+# tr [options] set1 set2
+# 从set1映射到set2， 然后将输出写入srdout set1和set2是字符类或字符祖 如果两个字符组的长度不想等
+# 那么set2会不断复制其最后一个字符，直到长度与set1相同。如果set2长过set1，溢出忽略。
+
+# 将大写转换成小写
+echo "HELLO WHO IS YOUR FATHER" |tr 'A-Z' 'a-z'         
+# 'start-end'
+
+#加密
+echo 12345 | tr '0-9' '890604'
+
+#解密
+echo 90604 | tr '890604' '0-9'
+
+# ROT13
+echo "tr came, tr saw, tr conquered." | tr 'a-zA-Z' 'n-za-mN-ZA-M'
+echo ge pnzr, ge fnj, ge pbadhrerq. | tr 'a-zA-Z' 'n-za-mN-ZA-M'
+
+# 将制表符转换成单个空格
+tr '\t' ' ' < file.txt
+
+# 删除字符 -d
+echo "Hello 373 world 1024" | tr -d '0-9'
+
+# 字符串补集
+tr -c [set1] [set2]
+# 如果治给出了set1，那么tr会删除所有不再set1中的字符。如果也给出了set2，tr会将不再set1中的字符转换成set2
+# 中的字符。 如果-c， 那set1和set2都要给出
+
+# 删除不在补集中的所有字符
+echo hello 1 char 2 next 4 | tr -d -c '0-9 \n'

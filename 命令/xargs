@@ -1,0 +1,19 @@
+# xargs命令从stdin处读取一系列参数，然后使用这些参数来执行指定命令，其应紧随管道操作符后。
+
+ls *.c | xargs grep main
+
+# 多行输入转换单行输出
+echo a b a c d > examples.txt
+echo 1 2 3 4 >> examples.txt
+cat examples.txt | xargs
+
+# 将单行输入转换成多列输出
+cat examples.txt | xargs -n 3
+
+# 指定分割符 -d
+echo "bbXaa " | xargs -d X
+# 不兼容中文 分割符只能是一个
+
+# 结合-n 分列
+echo xixihahaXxixihahaXxixihahaXxixihahaXxixihahaXxixihahaXxixihahaX | xargs -d X -n 3
+
