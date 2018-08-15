@@ -31,3 +31,9 @@ tr -c [set1] [set2]
 
 # 删除不在补集中的所有字符
 echo hello 1 char 2 next 4 | tr -d -c '0-9 \n'
+
+# 压缩字符
+tr -s '[需要被压缩的字符]'
+echo ‘HFUT IS                A GOOD  ONE？’ | tr -s ' '
+
+
