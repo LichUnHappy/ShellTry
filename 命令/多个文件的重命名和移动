@@ -1,0 +1,31 @@
+# rename file in the extension of jpg and png
+
+count=1;
+for img in `find . -iname '*.png' -o -iname '*.jpg' -type f -maxdepth 1`
+do
+    new=imge-$count.${img##*.}
+
+    echo "Renaming $img to $new"
+    mv "$img" "$new"
+    let count++
+done
+
+
+# rename for single file
+mv file1 file2
+
+# repalce the /0 by blank
+rename 's/ /_/g' *
+
+# upper to lower
+rename 'y/A-Z/a-z/' *
+
+# lower to upper
+rename 'y/a-z/A-Z/' *
+
+# throw all mp3 to certain directory
+find path -type f -name "*.mp3" -exec mv {} target_dir \;
+
+# replace blankk by _
+find path -type f -exec rename 's/ /_/g' {} \;
+

@@ -1,0 +1,9 @@
+% can extract the part of name from name.extension
+
+file_jpg="sample.jpg"
+name=${file_jpg%.*}
+echo file name is: $name
+
+extentison=${file_jpg#*.}
+echo extension is: $extension
+

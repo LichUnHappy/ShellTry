@@ -1,0 +1,21 @@
+split -b 10k data.file
+
+split -b 10k data.file -d -a 4
+
+split -b 10k data.file -d -a 4 split_file
+
+
+# by row 
+split -l 10 data.file
+
+
+# csplit can divide file by the context 
+csplit server.log /SERVER/ -n 2 -s {*} -f server -b "%02d.log"
+rm server00.log
+# /SERVER/ FLAG TO divide
+# -n 2 num of after
+# -s silent mode
+# {*} all in all
+# -f server after named by server
+# -b "%02d.log" similar to printf
+
