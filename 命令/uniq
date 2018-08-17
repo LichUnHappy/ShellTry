@@ -1,0 +1,22 @@
+# find the only line and can only used for sorted data
+
+cat sorted.txt
+bash
+foss
+hack
+hack
+
+uniq sorted.txt
+
+sort unsorted.txt | uniq
+
+# count the times that each line appears
+uniq -u sorted.txt
+
+# find the re-appear line
+sort unsorted.txt | uniq -d
+
+# -s skip the former N char
+# -w set the max char to compare
+
+

@@ -1,0 +1,13 @@
+filename=`mktemp`
+echo $filename
+
+
+dirname=`mktemp -d`
+echo $dirname
+
+
+tmpfile=`mktemp -u`
+echo $tmpfile
+
+mktemp test.XXX
+
