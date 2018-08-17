@@ -1,0 +1,41 @@
+# 排序
+# by sequence
+sort -n file.txt
+
+# by recurse
+sort -r file.txt
+
+# by minth
+sort -M months,txt
+
+# combine 2 sorted file
+sort -m sorted1 sorted2
+
+# find no-double line in sorted file
+sort file1.txt file2.txt | uniq
+
+# check whether the file has benn sorted
+sort -C filename;
+if [ $? -eq 0 ]; then
+    echo sorted;
+else
+    echo no sorted;
+fi
+
+# -k point out the base of sort. if the para is a single nim, it means the col. -r means the recursive
+sort -nrk 1 data.txt
+
+sort -nrk 2 data.txt
+
+
+echo 1 alpha 300 > data2.txt
+echo 2 beta 200 >> data2.txt 
+echo 3 gamma 100 >> data2.txt 
+cat data2.txt 
+
+sort -bk 2.3,2.4 data2.txt 
+$ out ->
+3 gamma 100
+1 alpha 300
+2 beta 200
+
