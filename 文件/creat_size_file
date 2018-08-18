@@ -1,0 +1,16 @@
+# dd cmd clone the input and pipe the copy to the output
+# creat a 1M file 
+dd if=/dev/zero of=junk.data bs=1M count=1
+
+    # if -> input file
+    # of -> output file
+    # bs -> block size
+    # count no of blocks to copy
+
+    # 1 Byte C
+    # 1 Word W
+    # 1 Block B
+    # 1024 B k
+    # 1024kb M
+    # 1024Mb G
+
