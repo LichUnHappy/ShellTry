@@ -1,0 +1,6 @@
+ailver
+apple
+gold
+iron
+orange
+steel

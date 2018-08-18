@@ -1,0 +1,10 @@
+sort A.txt -o A.txt
+sort B.txt -0 B.txt
+
+comm A.txt B.txt 
+
+comm A.txt B.txt -1 -2
+
+comm A.txt B.txt -3
+
+comm A.txt B.txt -3 | tr -d '\t'
