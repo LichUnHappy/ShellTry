@@ -1,0 +1,14 @@
+符号链接 快捷方式
+
+# creat sl
+ln -s target symbolic_link_name
+
+# make sure the sl
+ln -l symbolic_link_name
+
+# print the dir sl
+ls -l | grep "^1"
+
+# print the dir and its dir -r sl
+fidn . -type l -print
+

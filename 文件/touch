@@ -1,0 +1,7 @@
+ # touch
+
+touch -a change visit time
+touch -m change mod time
+
+# set time stamp
+touch -d "Fri Jun 25 20:50:14 IST 1999" filename

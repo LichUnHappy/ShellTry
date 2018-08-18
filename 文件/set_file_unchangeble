@@ -1,0 +1,10 @@
+df -T /etc/mtab 
+1st col path of device 
+3st col file type
+
+chattr change extention property 
+
+# change to be unchangeble
+chattr +i file
+
+chattr -i file
