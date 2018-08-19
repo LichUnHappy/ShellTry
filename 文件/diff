@@ -12,3 +12,9 @@ patch -p1 version1.txt < version.patch
 # undo the patch
 patch -p1 version1.txt < version.patch
 
+# diff dir
+diff -Naur dir1 dir2
+    # -N take NaN file to be empty
+    # -a take all file as txt
+    # - u unified
+    # -r 
