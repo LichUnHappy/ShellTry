@@ -1,0 +1,14 @@
+# nonunified 
+diff version1.txt version2.txt
+
+# unified
+diff -u version1.txt version2.txt
+
+# make up the difference by patch
+diff -u version1.txt version2.txt > version.patch
+
+patch -p1 version1.txt < version.patch
+
+# undo the patch
+patch -p1 version1.txt < version.patch
+
