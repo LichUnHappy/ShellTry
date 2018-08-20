@@ -1,0 +1,35 @@
+sed可以替换字符串
+
+sed 's/pattern/replace_string/' file
+
+cat file | sed 's/pattern/replace_string/'
+
+# 选项-i替换首次从出现
+sed -i 's/text/replace/' file
+# g标记全剧替换
+sed 's/text/replace/g' file
+# /#g 可以让sed替换第n此出现的匹配
+echo thisthisthis | sed 's/this/THIS/2g'
+echo thisthisthis | sed 's/this/THIS/3g'
+echo thisthisthis | sed 's/this/THIS/4g'
+
+# 消除空行
+sed 's/^$/d' file
+
+# 在文件中进行替换
+sed 's/pattern/replace/' -i filename
+
+# 已经匹配字符串标记(&)
+echo this is an example | sed 's/\w+/[&]/g'
+
+# 子串匹配标志(\1)
+echo this is digit 7 in a num | sed 's/digit \([0-9]\)/\1/'
+    \(pattern\)匹配子串
+
+echo seven EIFGT | sed 's/\([a-z]\+\) \([A-Z]\+\)/\2 \1/'
+    \([a-z]\+\)匹配第一个单词，\([A-Z]\+\)匹配第二个单词 \1 \2 向后引用
+
+# 组合多个表达式
+echo abc | sed 's/a/A/' | sed 's/c/C/'
+echo abc | sed 's/a/A/ ; s/c/C/'
+echo abc | sed -e 's/a/A/' -e 's/c/C/'
