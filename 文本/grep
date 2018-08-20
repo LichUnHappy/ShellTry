@@ -1,0 +1,26 @@
+# 递归在多级目录中对文本进行递归搜索
+grep "test_function()" . -R -n
+or
+find . -type f | xrags grep "test_function()"
+
+# 忽略大写小写 -i
+echo hello word | grep -i "HELLO"
+
+# 匹配多个模式 -e
+echo this is a line of text | grep -o -e "this" -e "line"
+
+# 指定或排除文件 include exclude
+## 使用--include在目录中递归搜索所有的c和cpp文件
+grep "main()" . -r --include *.{c,cpp}
+## 使用--exclude在搜索过程中排除所有的README文件
+grep "main()" . -r --exclude "README"
+## 选项--exclude-dir可以排除目录
+grep main . -r --exclude-dir CVS
+
+# 使用0字节后缀的xargs与grep
+因为以文件名作为输入，可能带空格，所以-0
+echo "test" > file1
+echo "test1" > file2
+echo "test3" > file3
+
+grep "test" file* -lZ | xargs -0 rm
