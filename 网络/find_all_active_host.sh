@@ -12,7 +12,7 @@
 #     fi
 # done
 
-for ip in `seq 1 255`
+for ip in {`seq 1 255`}
 
   do
 
