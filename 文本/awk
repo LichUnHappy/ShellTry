@@ -25,5 +25,17 @@ $2 第二个字段
 
 echo -e "line1 f2 f3\nline2 f4 f5\nline3 f6 f7" |\ 
 awk '{
-    print "NR","NF","$0"=$0,"$1"=$1,"$2"=$2,"$3"=$3;
+    print $NR, $NF, $0, $1, $2, $3;
 }'
+
+seq 5 | awk 'BEGIN { sum=0; print "Summation:"} { print $1"+"; sum+=$1 } END { print "=="; print sum}'
+
+# 将外部变量传递给awk
+VAR=10000
+echo | awk -v VARIABLE=$VAR '{ print VARIABLE}'
+
+var1="VARIABLE1" ; var2="VARIABLE2"
+echo | awk '{ print v1, v2 }' v1=$var1 v2=$var2
+
+awk '{ print v1, v2 }' v1=$var1 v2=$var2 filename
+
