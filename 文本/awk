@@ -1,0 +1,29 @@
+# Basic architecture of awk script
+awk 'BEGIN{ print "start" } pattern { commands} END{ print "end" }' file
+    # awk脚本通常3部分：BEGIN END 和带模式匹配选项的公共语句块(common statement)
+
+# Examples
+awk 'BEGIN { statements} { statements } END { end statements }'
+or
+awk "BEGIN { statements } { statements} END { end statements }"
+    # 输出文件line
+    awk 'BEGIN { i=0 } { i++ } END { print i }' filename
+
+echo -e "line\nline2" | awk 'BEGIN { print "START" } { print } END { print "END" }'
+
+echo | awk '{ var1="v1"; var2="v2"; var3="v3"; print var1,var2,var3; }'
+
+echo | awk '{ var1="v1"; var2="v2"; var3="v3"; print var1"-"var2"-"var3; }'
+
+
+# 特殊变量
+NR 记录编号 行号 
+NF 字段数 空格分割
+$0 当前记录的文本内容
+$1 第一个字段
+$2 第二个字段
+
+echo -e "line1 f2 f3\nline2 f4 f5\nline3 f6 f7" |\ 
+awk '{
+    print "NR","NF","$0"=$0,"$1"=$1,"$2"=$2,"$3"=$3;
+}'
